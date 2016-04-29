@@ -1,9 +1,15 @@
 package com.tfa;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +17,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class testOne {
 
 	@Test
-	public void verificarTitulo() throws InterruptedException{ {
+	public void verificarTitulo() throws InterruptedException, IOException{ {
 		WebDriver browser = new FirefoxDriver();
 		browser.get("https://www.google.com.ar");
 
@@ -32,6 +38,10 @@ public class testOne {
 		linkImagenes.click();
 
 		Thread.sleep(2000);
+		
+		File scrFile = ((TakesScreenshot) browser).getScreenshotAs(OutputType.FILE);
+
+		FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshotff.png"));
 
 		String resultadoAct = browser.getTitle();
 
