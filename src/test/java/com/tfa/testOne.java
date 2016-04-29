@@ -17,16 +17,28 @@ public class testOne {
 
 		WebElement caja = browser.findElement(By.id("lst-ib"));
 
-		caja.sendKeys("Calafate- Argentina");
+		String query = "Calafate - Argentina";
+		caja.sendKeys(query);
 		caja.sendKeys(Keys.ENTER);
 
 		Thread.sleep(2000);
+
+		//Variable con el TITULO DEL LINK
+		//HACES EL CODIGO PARA OBTENER EL LINK
+		//LE HACES CLICK AL ELEMENTO LINK
+
+		String tituloImagenes = "Imágenes de Calafate - Argentina";
+		WebElement linkImagenes = browser.findElement(By.xpath(".//a[text()='"+tituloImagenes+"']"));
+		linkImagenes.click();
+
+		Thread.sleep(2000);
+
 		String resultadoAct = browser.getTitle();
-		String resultadoEsp = "Promociones, Turismo, Hoteles, Excursiones";
 
 		browser.close();
 
-		Assert.assertEquals(resultadoEsp, resultadoAct);
+		if (!resultadoAct.contains(query))
+			Assert.fail("The query is not in the title");
 	}
 
 }
