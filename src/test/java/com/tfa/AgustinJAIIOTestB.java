@@ -60,7 +60,7 @@ public class AgustinJAIIOTestB {
 			throws InterruptedException, IOException, HeadlessException, AWTException {
 		WebDriver browser = this.getBrowser(browserName);
 		browser.manage().window().maximize();
-		browser.get("https://www.google.com.ar");
+		browser.get("https://scholar.google.com.ar/");
 
 		Thread.sleep(7000);
 
